@@ -1,6 +1,5 @@
 streamlit
 mediapipe
-pickle
 pandas
 numpy
 opencv-python
