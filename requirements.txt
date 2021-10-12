@@ -1,0 +1,7 @@
+streamlit
+mediapipe
+csv
+pickle
+pandas
+numpy
+opencv-python
