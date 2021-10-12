@@ -6,22 +6,6 @@ import numpy as np
 import pandas as pd
 import pickle
 
-import pickle
-
-#st.title("Webcam Live Feed")
-#run = st.checkbox('Run')
-#FRAME_WINDOW = st.image([])
-#camera = cv2.VideoCapture(0)
-
-#while run:
-#    _, frame = camera.read()
-#    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-#    FRAME_WINDOW.image(frame)
-#else:
-#    st.write('Stopped')
-
-
-
 st.title("거북목 판별기")
 run = st.checkbox('다른 창에 있는 웹캠을 끄시고 실행해주세요.')
 window = st.image([])
@@ -90,14 +74,6 @@ if run == True:
                 # Concate rows
                 row = pose_row+face_row
                 
-    #             # Append class name 
-    #             row.insert(0, class_name)
-                
-    #             # Export to CSV
-    #             with open('coords.csv', mode='a', newline='') as f:
-    #                 csv_writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    #                 csv_writer.writerow(row) 
-
                 # Make Detections
                 X = pd.DataFrame([row])
                 turtel_neck_class = model.predict(X)[0]
@@ -137,7 +113,8 @@ if run == True:
                 pass
                             
             #cv2.imshow('Raw Webcam Feed', image)
-            window.image(image)
+            fix_img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            window.image(fix_img)
 
             if cv2.waitKey(10) & 0xFF == ord('q'):
                 break
